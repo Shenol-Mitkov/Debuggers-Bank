@@ -65,6 +65,8 @@ namespace Debuggers_Bank.Entities
             int id = UserAccounts.Count + 1;
             new Accounts(accountName, accountBalance, id);
             Console.WriteLine("Account created successfully.");
+            
+            Console.WriteLine();
         }
 
         //Function to display the details of all accounts
