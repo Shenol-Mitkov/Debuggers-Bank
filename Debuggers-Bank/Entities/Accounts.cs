@@ -22,6 +22,7 @@ namespace Debuggers_Bank.Entities
             UserAccounts.Add(this);
         }
 
+        //Function to create a new account
         public void CreateAccount()
         {
             Console.Write("Would you like to create a new account? (y/n) ");
