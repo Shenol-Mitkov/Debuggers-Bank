@@ -29,7 +29,7 @@ namespace Debuggers_Bank.Entities
             do
             {
                 keyInfo = Console.ReadKey(true);
-                if (keyInfo.Key != ConsoleKey.Y && keyInfo.Key != ConsoleKey.N)
+                if (keyInfo.Key != ConsoleKey.Y || keyInfo.Key != ConsoleKey.N)
                 {
                     Console.Write("Please press y or n: ");
                 }
