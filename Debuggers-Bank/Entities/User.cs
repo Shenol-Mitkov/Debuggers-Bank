@@ -11,8 +11,8 @@ namespace Debuggers_Bank.Entities
         public int FailedLoginAttempts { get; set; }
         public bool IsLocked { get; set; }
 
-        public User(string username, string passwordhash)
-        {
+            public User(string username, string passwordhash)
+            {
             Username = username;
             PasswordHash = passwordhash;
             FailedLoginAttempts = 0;
