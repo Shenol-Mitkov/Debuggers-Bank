@@ -9,8 +9,14 @@ namespace Debuggers_Bank.Entities
     {
         private static readonly List<Accounts> UserAccounts = new List<Accounts>();
 
+        static Accounts()
+        {
+            new Accounts("Main account", 1000, 1);
+            new Accounts("Travel Account", 2500, 2);
+        }
+
         private readonly int _id;
-        private readonly double _accountBalance;
+        private double _accountBalance;
 
         public string AccountName { get; set; }
 

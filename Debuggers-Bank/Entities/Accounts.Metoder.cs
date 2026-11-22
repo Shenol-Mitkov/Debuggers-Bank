@@ -74,8 +74,77 @@ namespace Debuggers_Bank.Entities
 
 
         public static void TransferMoney()
+
         {
-            
+            if (UserAccounts.Count < 2)
+            {
+                Console.WriteLine("At least two accounts are required for a transfer.");
+                return;
+            }
+
+            ShowAccounts();
+
+            Console.Write("Enter the account ID from which to transfer: ");
+            if (!int.TryParse(Console.ReadLine(), out int sourceId))
+            {
+                Console.WriteLine("Invalid source account ID.");
+                return;
+            }
+
+            Console.Write("Enter the destination account ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int destinationId))
+            {
+                Console.WriteLine("Invalid destination account ID.");
+                return;
+            }
+
+            Accounts? source = UserAccounts.Find(account => account._id == sourceId);
+            Accounts? destination = UserAccounts.Find(account => account._id == destinationId);
+
+            if (source is null)
+            {
+                Console.WriteLine("The source account could not be found.");
+                return;
+            }
+
+            if (destination is null)
+            {
+                Console.WriteLine("The destination account could not be found.");
+                return;
+            }
+
+            if (source == destination)
+            {
+                Console.WriteLine("The source and destination accounts must be different.");
+                return;
+            }
+
+            Console.Write("Enter an amount to transfer: ");
+            if (!double.TryParse(
+                    Console.ReadLine(),
+                    NumberStyles.AllowDecimalPoint | NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite,
+                    CultureInfo.InvariantCulture,
+                    out double amount) ||
+                amount <= 0 ||
+                double.IsNaN(amount) ||
+                double.IsInfinity(amount))
+            {
+                Console.WriteLine("Enter a valid positive transfer amount.");
+                return;
+            }
+
+            if (source._accountBalance < amount)
+            {
+                Console.WriteLine("Insufficient balance in the source account.");
+                return;
+            }
+
+            source._accountBalance -= amount;
+            destination._accountBalance += amount;
+
+            Console.WriteLine(
+                $"Successfully transferred {amount.ToString("F2", CultureInfo.InvariantCulture)} Kr " +
+                $"from account {sourceId} to account {destinationId}.");
         }
     }
 }
