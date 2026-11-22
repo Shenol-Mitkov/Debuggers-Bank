@@ -6,13 +6,11 @@ namespace Debuggers_Bank
     {
         static void Main()
         {
-            Accounts account = new Accounts("Savings Account", 1000, 1);
-            
-            account.ShowAccounts();
-            account.CreateAccount();
-            account.ShowAccounts();
+            Menu DebuggersBank = new Menu();
 
-            Console.ReadLine();
+            DebuggersBank.ShowMenu();
+
+
         }
     }
 }
