@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Debuggers_Bank.Entities
 {
-    internal class Accounts
+    internal partial class Accounts
     {
         private static readonly List<Accounts> UserAccounts = new List<Accounts>();
 
