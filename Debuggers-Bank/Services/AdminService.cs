@@ -7,7 +7,12 @@ namespace Debuggers_Bank.Services
 {
     internal class AdminService
     {
-        private List<User> users = new List<User>(); 
+        private List<User> users;
+
+        public AdminService(List<User> userList)
+        {
+            users = userList;
+        }
 
         public bool UsernameExists(string username)
         {
