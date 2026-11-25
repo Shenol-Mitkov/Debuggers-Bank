@@ -28,7 +28,11 @@ namespace Debuggers_Bank.Entities
             UserAccounts.Add(this);
         }
 
-       
+
+        private sealed record Transaction(DateTimeOffset Timestamp, int FromAccountId, string FromAccountName, int ToAccountId, string ToAccountName, double Amount);
+
+        private static readonly List<Transaction> TransactionHistory = new List<Transaction>();
+
 
 
     }
