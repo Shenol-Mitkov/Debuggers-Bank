@@ -13,7 +13,8 @@
                 Console.WriteLine("1. Create a new account");
                 Console.WriteLine("2. Show all accounts");
                 Console.WriteLine("3. Transfer money between accounts");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Show transaction history");
+                Console.WriteLine("5. Exit");
                 Console.WriteLine("==============================");
                 Console.Write("Select an option: ");
 
@@ -36,9 +37,13 @@
                         break;
                     case "4":
                         Console.Clear();
+                        Accounts.ShowTransactionHistory();
+                        PauseForUser();
+                        break;
+                    case "5":
+                        Console.Clear();
                         Console.WriteLine("Thank you for using Debuggers Bank!");
-
-                        Console.ReadLine();
+                        Console.ReadKey(); 
                         return;
                     default:
                         Console.WriteLine("Invalid option. Please select 1, 2, 3 or 4.");

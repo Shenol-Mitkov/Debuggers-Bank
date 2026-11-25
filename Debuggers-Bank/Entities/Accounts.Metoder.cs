@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Debuggers_Bank.Entities
@@ -142,9 +143,30 @@ namespace Debuggers_Bank.Entities
             source._accountBalance -= amount;
             destination._accountBalance += amount;
 
+            TransactionHistory.Add(new Transaction(DateTimeOffset.Now, source._id, source.AccountName, destination._id, destination.AccountName, amount));
+
+            
+
             Console.WriteLine(
                 $"Successfully transferred {amount.ToString("F2", CultureInfo.InvariantCulture)} Kr " +
                 $"from account {sourceId} to account {destinationId}.");
+        }
+
+        public static void ShowTransactionHistory()
+        {
+            if (TransactionHistory.Count == 0)
+            {
+                Console.WriteLine("No transactions have been made.");
+                return;
+            }
+            foreach (var transaction in TransactionHistory)
+            {
+                Console.WriteLine($"Timestamp: {transaction.Timestamp}");
+                Console.WriteLine($"From Account ID: {transaction.FromAccountId} ({transaction.FromAccountName})");
+                Console.WriteLine($"To Account ID: {transaction.ToAccountId} ({transaction.ToAccountName})");
+                Console.WriteLine($"Amount: {transaction.Amount.ToString("F2", CultureInfo.InvariantCulture)} Kr");
+                Console.WriteLine();
+            }
         }
     }
 }
