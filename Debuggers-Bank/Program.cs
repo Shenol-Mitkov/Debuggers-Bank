@@ -8,19 +8,19 @@ namespace Debuggers_Bank
     {
         static void Main()
         {
+         
             List<User> users = new List<User>();
             AdminService adminService = new AdminService(users);
             AuthenticationService authenticationService = new AuthenticationService(users);
 
-          
+            Menu DebuggersBank = new Menu();
 
-            Accounts account = new Accounts("Savings Account", 1000, 1);
-            
-            account.ShowAccounts();
-            account.CreateAccount();
-            account.ShowAccounts(); 
+            DebuggersBank.ShowMenu();
 
-            Console.ReadLine();
+
+
+
+
         }
     }
 }
