@@ -2,6 +2,12 @@
 {
     internal class Menu
     {
+        private List<User> users;
+
+        public Menu(List<User> userList)
+        {
+            users = userList;
+        }
         public void ShowMenu()
         {
             while (true)
