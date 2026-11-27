@@ -17,7 +17,9 @@ namespace Debuggers_Bank.Entities
             PasswordHash = passwordhash;
             FailedLoginAttempts = 0;
             IsLocked = false;
-        }
+            }
+
+        
 
 
     }

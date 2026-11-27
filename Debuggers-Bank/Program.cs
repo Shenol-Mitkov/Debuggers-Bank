@@ -12,8 +12,7 @@ namespace Debuggers_Bank
             AdminService adminService = new AdminService(users);
             AuthenticationService authenticationService = new AuthenticationService(users);
 
-            adminService.CreateUser("Farid", "12345");
-            adminService.CreateUser("Farid", "33334");
+          
 
             Accounts account = new Accounts("Savings Account", 1000, 1);
             

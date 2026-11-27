@@ -28,12 +28,34 @@ namespace Debuggers_Bank.Services
 
         public bool Login(string username, string password)
         {
-            User user = FindUser(username);
+            User? user = FindUser(username);
             if (user == null)
             {
                 return false;
             }
-            return true;
+            
+
+            if (user.IsLocked == true) 
+            {
+                return false;
+            }
+            
+            if (user.PasswordHash == password)
+            {
+                user.FailedLoginAttempts = 0;
+                return true;
+            }
+            else
+            {
+                user.FailedLoginAttempts++;
+                if (user.FailedLoginAttempts >= 3)
+                {
+                    user.IsLocked = true;
+                    
+                }
+                
+            }
+            return false;
         }
     }
 }
