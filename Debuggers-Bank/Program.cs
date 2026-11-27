@@ -13,7 +13,13 @@ namespace Debuggers_Bank
             AdminService adminService = new AdminService(users);
             AuthenticationService authenticationService = new AuthenticationService(users);
 
-            Menu DebuggersBank = new Menu();
+            adminService.CreateUser("user1", "test123");
+            adminService.CreateUser("user2", "test456");
+            adminService.CreateUser("user3", "test789");
+
+            
+
+            Menu DebuggersBank = new Menu(users);
 
             DebuggersBank.ShowMenu();
 
